@@ -3,14 +3,11 @@ import './App.css';
 
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 
-
-
-
 function App() {
 
 
 
-  const APIURL = 'https://api.thegraph.com/subgraphs/name/guillermocalderon2021/marketplace-shoes/graphql'
+  const APIURL = 'https://api.thegraph.com/subgraphs/name/guillermocalderon2021/marketplace-shoes'
 
 const tokensQuery = `
   query {
@@ -18,6 +15,7 @@ const tokensQuery = `
         id
         token {
           id
+          contentURI
         }
         price
         creator {
@@ -26,12 +24,8 @@ const tokensQuery = `
       }
   }
 `
-
 const client = new ApolloClient({
   uri: APIURL,
-  fetchOptions: {
-    mode: 'no-cors',
-  },
   cache: new InMemoryCache(),
 })
 
@@ -43,9 +37,6 @@ client
   .catch((err) => {
     console.log('Error fetching data: ', err)
   })
-
-
-
 
 
   return (

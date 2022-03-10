@@ -12,6 +12,7 @@
     "react-scripts": "5.0.0",
     "web-vitals": "^2.1.4"
   },
+  "homepage": "https://prueba-react09032022.000webhostapp.com/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
