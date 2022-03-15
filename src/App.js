@@ -6,22 +6,14 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 function App() {
 
 
-
+  let cuenta='0x1665d808030a6cbc1def001343cdb37f80e85ee4'
   const APIURL = 'https://api.thegraph.com/subgraphs/name/guillermocalderon2021/marketplace-shoes'
 
 const tokensQuery = `
-  query {
-    shoes(first: 5) {
-        id
-        token {
-          id
-          contentURI
-        }
-        price
-        creator {
-          id
-        }
-      }
+{
+  account(id:"${cuenta}"){
+    role
+    }
   }
 `
 const client = new ApolloClient({
@@ -29,6 +21,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 })
 
+console.log(tokensQuery);
 client
   .query({
     query: gql(tokensQuery),
